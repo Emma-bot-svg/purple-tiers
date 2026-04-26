@@ -8,6 +8,7 @@ const supabase = createClient(
 )
 
 export default function SecureAdminPanel() {
+  const [isAuthorized, setIsAuthorized] = useState(false)
   const [players, setPlayers] = useState<any[]>([])
   const [serverIp, setServerIp] = useState('')
   
@@ -33,7 +34,17 @@ export default function SecureAdminPanel() {
   const baseTiers = ["HT1", "LT1", "HT2", "LT2", "HT3", "LT3", "HT4", "LT4", "HT5", "LT5"];
   const allTierOptions = [...baseTiers, ...baseTiers.map(t => `Peak ${t}`), ...baseTiers.map(t => `Retired ${t}`)];
 
-  useEffect(() => { fetchData() }, [])
+  useEffect(() => {
+    // EASY LOCK CHECK
+    const password = prompt("ENTER ADMIN ACCESS KEY:")
+    if (password === process.env.NEXT_PUBLIC_ADMIN_KEY) {
+      setIsAuthorized(true)
+      fetchData()
+    } else {
+      alert("WRONG KEY. ACCESS DENIED.")
+      window.location.href = "/" 
+    }
+  }, [])
 
   const fetchData = async () => {
     const { data } = await supabase.from('players').select('*').order('username', { ascending: true })
@@ -67,6 +78,9 @@ export default function SecureAdminPanel() {
     const { error } = await supabase.from('settings').update({ value: newIp }).eq('key', 'server_ip')
     if (error) alert(error.message); else { alert('🌐 Server IP Updated!'); setServerIp(newIp); }
   }
+
+  // If not authorized, show blank black screen
+  if (!isAuthorized) return <div className="min-h-screen bg-black" />
 
   return (
     <div className="min-h-screen bg-[#0a0a0c] text-[#c9d1d9] p-4 md:p-10 font-sans">
