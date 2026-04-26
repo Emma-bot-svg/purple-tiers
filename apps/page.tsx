@@ -44,7 +44,7 @@ export default function Home() {
   }
 
   const getRankBg = (index: number) => {
-    if (index === 0) return 'bg-gradient-to-r from-[#FFD700]/30 to-[#FFD700]/10 border-[#FFD700]/50 shadow-[0_0_20px_rgba(255,215,0,0.2)]'; 
+    if (index === 0) return 'bg-gradient-to-r from-[#A855F7]/30 to-[#A855F7]/10 border-[#A855F7]/50 shadow-[0_0_20px_rgba(168,85,247,0.2)]'; 
     if (index === 1) return 'bg-gradient-to-r from-[#C0C0C0]/30 to-[#C0C0C0]/10 border-[#C0C0C0]/50 shadow-[0_0_20px_rgba(192,192,192,0.2)]'; 
     if (index === 2) return 'bg-gradient-to-r from-[#CD7F32]/30 to-[#CD7F32]/10 border-[#CD7F32]/50 shadow-[0_0_20px_rgba(205,127,50,0.2)]'; 
     return 'bg-black/60 border-white/10';
@@ -77,8 +77,8 @@ export default function Home() {
   return (
     <div className="min-h-screen text-[#c9d1d9] pb-10 overflow-x-hidden relative">
       <div className="fixed inset-0 z-[-1] overflow-hidden bg-black">
-        <div className="absolute top-[-20%] left-[-20%] w-[140%] h-[140%] bg-gradient-to-br from-[#ff00ee] via-[#00aaff] to-[#00ffcc] opacity-60 blur-[130px] animate-[liquid_12s_infinite_alternate]" />
-        <div className="absolute bottom-[-20%] right-[-20%] w-[140%] h-[140%] bg-gradient-to-tl from-[#00ffdd] via-[#9100ff] to-[#ff00aa] opacity-50 blur-[130px] animate-[liquid_15s_infinite_alternate-reverse]" />
+        <div className="absolute top-[-20%] left-[-20%] w-[140%] h-[140%] bg-gradient-to-br from-[#A855F7] via-[#6B21A8] to-[#1E1B4B] opacity-60 blur-[130px] animate-[liquid_12s_infinite_alternate]" />
+        <div className="absolute bottom-[-20%] right-[-20%] w-[140%] h-[140%] bg-gradient-to-tl from-[#581C87] via-[#D8B4FE] to-[#701A75] opacity-50 blur-[130px] animate-[liquid_15s_infinite_alternate-reverse]" />
       </div>
 
       <style jsx global>{`
@@ -91,23 +91,22 @@ export default function Home() {
         .no-sb { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
 
-      <header className="bg-black/60 backdrop-blur-3xl border-b border-white/10 p-2 md:p-4 sticky top-0 z-">
+      <header className="bg-black/60 backdrop-blur-3xl border-b border-white/10 p-2 md:p-4 sticky top-0 z-50">
         <div className="max-w-[1250px] mx-auto flex flex-col gap-2">
           <div className="flex flex-col md:flex-row items-center justify-between gap-2">
             <h1 className="text-lg md:text-xl font-black italic text-white uppercase tracking-tighter shrink-0 animate-pulse">
-              <span className="text-[#ffaa00]">YUG'S</span> EMPIRE
+              <span className="text-[#A855F7]">PRXPLE</span> SMP
             </h1>
             <div className="flex items-center justify-center gap-1.5">
                 <button onClick={() => {navigator.clipboard.writeText(serverIp); alert('IP Copied!')}} className="bg-white px-2 py-1 rounded text-black text-[7px] md:text-[10px] font-black uppercase hover:invert transition-all">{serverIp}</button>
-                <a href="https://yugsh.craftingstore.net/" className="bg-[#ffaa00] p-1.5 rounded text-black hover:scale-110 active:scale-95 transition-transform"><svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></a>
-                <a href="https://discord.gg/7MffWmYbNE" className="bg-[#5865F2] p-1.5 rounded text-white hover:scale-110 active:scale-95 transition-transform"><svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.666 4.37a.07.07 0 00-.032.027C.533 9.048-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.063 14.063 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128c.125-.094.249-.192.37-.291a.074.074 0 01.077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 01.077.01c.12.099.244.197.37.291a.077.077 0 01-.006.127 12.29 12.29 0 01-1.873.893.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 00-.031-.03z"/></svg></a>
-                <a href="https://youtube.com/@ITS_YUG_XD" className="bg-red-600 p-1.5 rounded text-white hover:scale-110 active:scale-95 transition-transform"><svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="https://discord.gg/k2RzMbcXkW" target="_blank" className="bg-[#5865F2] p-1.5 rounded text-white hover:scale-110 active:scale-95 transition-transform"><svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.666 4.37a.07.07 0 00-.032.027C.533 9.048-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.063 14.063 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128c.125-.094.249-.192.37-.291a.074.074 0 01.077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 01.077.01c.12.099.244.197.37.291a.077.077 0 01-.006.127 12.29 12.29 0 01-1.873.893.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 00-.031-.03z"/></svg></a>
+                <a href="https://www.youtube.com/@prxple1" target="_blank" className="bg-red-600 p-1.5 rounded text-white hover:scale-110 active:scale-95 transition-transform"><svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
             </div>
           </div>
           
           <div className="flex gap-1 overflow-x-auto no-sb pt-1 border-t border-white/5">
             {modes.map((m, idx) => (
-              <button key={m.n} onClick={() => { setActiveGamemode(m.n); setSearch('') }} className={`py-1.5 px-3 rounded flex items-center gap-1 shrink-0 transition-all card-entry hover:bg-white/10 active:scale-95 ${activeGamemode === m.n ? 'bg-[#ffaa00] text-black font-black scale-105' : 'bg-white/5 text-gray-500'}`} style={{animationDelay: `${idx * 0.05}s`}}>
+              <button key={m.n} onClick={() => { setActiveGamemode(m.n); setSearch('') }} className={`py-1.5 px-3 rounded flex items-center gap-1 shrink-0 transition-all card-entry hover:bg-white/10 active:scale-95 ${activeGamemode === m.n ? 'bg-[#A855F7] text-white font-black scale-105' : 'bg-white/5 text-gray-500'}`} style={{animationDelay: `${idx * 0.05}s`}}>
                 <img src={`https://mctiers.com/tier_icons/${m.i}`} className="w-3.5 h-3.5" alt="" />
                 <span className="text-[8px] md:text-[10px] uppercase italic">{m.n}</span>
               </button>
@@ -123,7 +122,7 @@ export default function Home() {
             placeholder="SEARCH PLAYER..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-black/60 border border-white/20 rounded-md py-2 px-10 text-[10px] md:text-xs font-bold text-white tracking-widest focus:border-[#ffaa00] transition-all outline-none animate-pulse"
+            className="w-full bg-black/60 border border-white/20 rounded-md py-2 px-10 text-[10px] md:text-xs font-bold text-white tracking-widest focus:border-[#A855F7] transition-all outline-none animate-pulse"
           />
         </div>
 
@@ -135,7 +134,6 @@ export default function Home() {
               return (
                 <div key={p.username} className={`card-entry flex items-center border rounded-lg h-[55px] md:h-[78px] relative w-full group overflow-hidden hover:scale-[1.01] transition-all ${getRankBg(i)}`} style={{animationDelay: `${i * 0.05}s`}}>
                   <div className="w-14 md:w-32 h-full flex items-center shrink-0 relative px-2">
-                    {/* FIXED: Increased z-index and forced visibility for rank numbers on mobile */}
                     <span className="text-xl md:text-3xl font-black italic z-20 text-white tracking-tighter drop-shadow-lg">{i + 1}</span>
                     <div className="absolute right-[-15px] md:right-[-35px] top-1/2 -translate-y-[48%] z-10 h-full flex items-center skin-anim">
                         <img src={`https://render.crafty.gg/3d/bust/${p.username}?crop=face`} className="h-[52px] md:h-[105px] drop-shadow-[0_0_15px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform" alt="" />
@@ -145,7 +143,7 @@ export default function Home() {
                   <div className="flex-1 flex flex-col justify-center pl-6 md:pl-28 pr-4 min-w-0">
                     <div className="flex items-center w-full justify-between gap-1 overflow-hidden">
                        <span className="text-[11px] md:text-2xl font-black text-white italic truncate">{p.username}</span>
-                       <span className="text-[7px] md:text-[11px] font-black text-yellow-500 lowercase shrink-0">{p.points} points</span>
+                       <span className="text-[7px] md:text-[11px] font-black text-[#E879F9] lowercase shrink-0">{p.points} points</span>
                     </div>
                     <div className="flex items-center gap-1.5 mt-0.5">
                         <img src={rank.img} className="h-2.5 md:h-4 shrink-0" alt="" />
@@ -158,7 +156,7 @@ export default function Home() {
                     {testedModes.map(m => (
                       <div key={m.n} className={`flex flex-col items-center min-w-[16px] md:min-w-[35px] ${p.tiers[m.n] ? 'opacity-100' : 'opacity-10'}`}>
                         <img src={`https://mctiers.com/tier_icons/${m.i}`} className="w-3.5 md:w-5 h-3.5 md:h-5 mb-1 group-hover:rotate-12 transition-transform" alt="" />
-                        <span className="text-[7px] md:text-[11px] font-black text-[#ffaa00]">{p.tiers[m.n] || ''}</span>
+                        <span className="text-[7px] md:text-[11px] font-black text-[#A855F7]">{p.tiers[m.n] || ''}</span>
                       </div>
                     ))}
                   </div>
@@ -170,7 +168,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-2.5">
             {tierNumbers.map((t, idx) => (
               <div key={t} className="flex flex-col gap-1.5 card-entry" style={{animationDelay: `${idx * 0.1}s`}}>
-                <div className="py-2 px-1 font-black italic text-center uppercase text-[12px] border-b-2 border-[#ffaa00]/30 text-white tracking-widest drop-shadow-[0_0_8px_rgba(255,170,0,0.4)] mb-2">
+                <div className="py-2 px-1 font-black italic text-center uppercase text-[12px] border-b-2 border-[#A855F7]/30 text-white tracking-widest drop-shadow-[0_0_8px_rgba(168,85,247,0.4)] mb-2">
                   TIER {t}
                 </div>
                 {players.filter(p => p.gamemode === activeGamemode && p.tier?.includes(t.toString()) && p.username.toLowerCase().includes(search.toLowerCase())).map((p, pIdx) => (
@@ -179,7 +177,7 @@ export default function Home() {
                       <img src={`https://mc-heads.net/avatar/${p.username}/16`} className="w-4 h-4 rounded-sm" alt="" />
                       <span className="text-[10px] md:text-sm font-bold text-white truncate">{p.username}</span>
                     </div>
-                    <span className="text-[10px] font-black text-[#ffaa00] tracking-tight">{(p.tier || '').replace('PEAK ', '')}</span>
+                    <span className="text-[10px] font-black text-[#A855F7] tracking-tight">{(p.tier || '').replace('PEAK ', '')}</span>
                   </div>
                 ))}
               </div>
