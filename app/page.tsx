@@ -62,43 +62,29 @@ export default function Home() {
     { n: 'Sword', i: 'sword.svg' }, { n: 'Axe', i: 'axe.svg' }, { n: 'Mace', i: 'mace.svg' }
   ]
 
-  // FIXED LOGIC: Ensures any player added shows up in the leaderboard
   const getLB = () => {
     const g: any = {}
     if (!players || players.length === 0) return [];
-    
     players.forEach(p => {
       if (!p || !p.username) return;
       const n = p.username.trim();
-      
       if (!g[n]) {
-        g[n] = { 
-          username: n, 
-          points: 0, 
-          region: p.region || 'AS', 
-          tiers: {} 
-        }
+        g[n] = { username: n, points: 0, region: p.region || 'AS', tiers: {} }
       }
-      
-      // Sum points across all entries for this user
       g[n].points += (Number(p.points) || 0)
-      
-      // Add tier icons for specific gamemodes
       if (p.gamemode && p.gamemode !== 'Overall') {
         g[n].tiers[p.gamemode] = (p.tier || '').replace('PEAK ', '').trim();
       }
     })
-
-    return Object.values(g)
-      .filter((p: any) => p.username.toLowerCase().includes(search.toLowerCase()))
-      .sort((a: any, b: any) => b.points - a.points)
+    return Object.values(g).filter((p: any) => p.username.toLowerCase().includes(search.toLowerCase())).sort((a: any, b: any) => b.points - a.points)
   }
 
   return (
     <div className="min-h-screen text-[#c9d1d9] pb-10 overflow-x-hidden relative">
+      {/* PURPLE LIQUID GRADIENT BACKGROUND */}
       <div className="fixed inset-0 z-[-1] overflow-hidden bg-black">
-        <div className="absolute top-[-20%] left-[-20%] w-[140%] h-[140%] bg-gradient-to-br from-[#ff00ee] via-[#00aaff] to-[#00ffcc] opacity-60 blur-[130px] animate-[liquid_12s_infinite_alternate]" />
-        <div className="absolute bottom-[-20%] right-[-20%] w-[140%] h-[140%] bg-gradient-to-tl from-[#00ffdd] via-[#9100ff] to-[#ff00aa] opacity-50 blur-[130px] animate-[liquid_15s_infinite_alternate-reverse]" />
+        <div className="absolute top-[-20%] left-[-20%] w-[140%] h-[140%] bg-gradient-to-br from-[#4b0082] via-[#9100ff] to-[#000000] opacity-40 blur-[130px] animate-[liquid_12s_infinite_alternate]" />
+        <div className="absolute bottom-[-20%] right-[-20%] w-[140%] h-[140%] bg-gradient-to-tl from-[#000000] via-[#6a0dad] to-[#2e0854] opacity-40 blur-[130px] animate-[liquid_15s_infinite_alternate-reverse]" />
       </div>
 
       <style jsx global>{`
@@ -123,7 +109,6 @@ export default function Home() {
                 <a href="https://www.youtube.com/@prxple1" target="_blank" rel="noopener noreferrer" className="bg-red-600 p-1.5 rounded text-white hover:scale-110 active:scale-95 transition-transform"><svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
             </div>
           </div>
-          
           <div className="flex gap-1 overflow-x-auto no-sb pt-1 border-t border-white/5">
             {modes.map((m, idx) => (
               <button key={m.n} onClick={() => { setActiveGamemode(m.n); setSearch('') }} className={`py-1.5 px-3 rounded flex items-center gap-1 shrink-0 transition-all card-entry hover:bg-white/10 active:scale-95 ${activeGamemode === m.n ? 'bg-[#9100ff] text-white font-black scale-105' : 'bg-white/5 text-gray-500'}`} style={{animationDelay: `${idx * 0.05}s`}}>
@@ -161,9 +146,9 @@ export default function Home() {
                   </div>
                   
                   <div className="flex-1 flex flex-col justify-center pl-6 md:pl-28 pr-4 min-w-0">
-                    <div className="flex items-center w-full justify-between gap-1 overflow-hidden">
+                    <div className="flex items-center w-full justify-between gap-1 overflow-hidden pr-4"> {/* FIXED NAME CLIPPING */}
                        <span className="text-[11px] md:text-2xl font-black text-white italic truncate">{p.username}</span>
-                       <span className="text-[7px] md:text-[11px] font-black text-[#9100ff] lowercase shrink-0">{p.points} points</span>
+                       <span className="text-[7px] md:text-[11px] font-black text-[#00f2ff] lowercase shrink-0">{p.points} points</span> {/* CYAN POINTS */}
                     </div>
                     <div className="flex items-center gap-1.5 mt-0.5">
                         <img src={rank.img} className="h-2.5 md:h-4 shrink-0" alt="" />
@@ -176,7 +161,7 @@ export default function Home() {
                     {sortedModes.map(m => (
                       <div key={m.n} className={`flex flex-col items-center min-w-[16px] md:min-w-[35px] ${p.tiers[m.n] ? 'opacity-100' : 'opacity-10'}`}>
                         <img src={`https://mctiers.com/tier_icons/${m.i}`} className="w-3.5 md:w-5 h-3.5 md:h-5 mb-1 group-hover:rotate-12 transition-transform" alt="" />
-                        <span className="text-[7px] md:text-[11px] font-black text-[#9100ff]">{p.tiers[m.n] || ''}</span>
+                        <span className="text-[7px] md:text-[11px] font-black text-[#FFD700]">{p.tiers[m.n] || ''}</span> {/* GOLD TIERS */}
                       </div>
                     ))}
                   </div>
@@ -193,11 +178,11 @@ export default function Home() {
                 </div>
                 {players.filter(p => p.gamemode === activeGamemode && p.tier?.includes(t.toString()) && p.username.toLowerCase().includes(search.toLowerCase())).map((p, pIdx) => (
                   <div key={p.id} className="bg-black/60 border border-white/10 p-2 rounded flex items-center justify-between hover:bg-white/10 transition-all card-entry hover:translate-x-1" style={{animationDelay: `${pIdx * 0.03}s`}}>
-                    <div className="flex items-center gap-2 min-w-0 pr-1">
+                    <div className="flex items-center gap-2 min-w-0 pr-4"> {/* FIXED NAME CLIPPING */}
                       <img src={`https://mc-heads.net/avatar/${p.username}/16`} className="w-4 h-4 rounded-sm" alt="" />
                       <span className="text-[10px] md:text-sm font-bold text-white truncate">{p.username}</span>
                     </div>
-                    <span className="text-[10px] font-black text-[#9100ff] tracking-tight">{(p.tier || '').replace('PEAK ', '')}</span>
+                    <span className="text-[10px] font-black text-[#FFD700] tracking-tight">{(p.tier || '').replace('PEAK ', '')}</span> {/* GOLD TIERS */}
                   </div>
                 ))}
               </div>
