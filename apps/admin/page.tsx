@@ -74,49 +74,49 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-[#0d1117] text-[#c9d1d9] p-4 md:p-10">
-      <h1 className="text-3xl font-black italic text-white uppercase mb-10"><span className="text-[#ffaa00]">ADMIN</span> MANAGEMENT</h1>
+      <h1 className="text-3xl font-black italic text-white uppercase mb-10"><span className="text-[#A855F7]">ADMIN</span> MANAGEMENT</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1200px] mx-auto">
         
         {/* 1. ADD TIER */}
         <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl">
-          <h2 className="text-[#ffaa00] font-black uppercase text-sm mb-4 italic text-center">1. Add New Tier</h2>
+          <h2 className="text-[#A855F7] font-black uppercase text-sm mb-4 italic text-center">1. Add New Tier</h2>
           <form onSubmit={handleAdd} className="flex flex-col gap-3">
-            <input value={addName} onChange={e => setAddName(e.target.value)} placeholder="Username" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-[#ffaa00]" required />
+            <input value={addName} onChange={e => setAddName(e.target.value)} placeholder="Username" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-[#A855F7]" required />
             <select value={addMode} onChange={e => setAddMode(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-white">
                 {modes.map(m => <option key={m} value={m}>{m}</option>)}
             </select>
-            <select value={addTier} onChange={e => setAddTier(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-[#ffaa00] font-bold">
+            <select value={addTier} onChange={e => setAddTier(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-[#A855F7] font-bold">
                 {allTierOptions.map(t => <option key={t} value={t}>{t}</option>)}
             </select>
             <div className="grid grid-cols-2 gap-2">
                 <input type="number" value={addPoints} onChange={e => setAddPoints(Number(e.target.value))} placeholder="Points" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none" />
-                <select value={addRegion} onChange={e => setAddRegion(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-blue-400">
+                <select value={addRegion} onChange={e => setAddRegion(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-purple-400">
                     {regions.map(r => <option key={r} value={r}>{r}</option>)}
                 </select>
             </div>
-            <button className="bg-[#ffaa00] text-black font-black py-3 rounded-lg text-[10px] uppercase">Add Entry</button>
+            <button className="bg-[#A855F7] text-white font-black py-3 rounded-lg text-[10px] uppercase hover:bg-[#8B5CF6] transition-colors">Add Entry</button>
           </form>
         </div>
 
         {/* 2. CHANGE TIER */}
         <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl">
-          <h2 className="text-blue-400 font-black uppercase text-sm mb-4 italic text-center">2. Change Existing Tier</h2>
+          <h2 className="text-purple-300 font-black uppercase text-sm mb-4 italic text-center">2. Change Existing Tier</h2>
           <form onSubmit={handleChange} className="flex flex-col gap-3">
-            <input value={changeName} onChange={e => setChangeName(e.target.value)} placeholder="Username" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-blue-400" required />
+            <input value={changeName} onChange={e => setChangeName(e.target.value)} placeholder="Username" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-[#A855F7]" required />
             <select value={changeMode} onChange={e => setChangeMode(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-white">
                 {modes.map(m => <option key={m} value={m}>{m}</option>)}
             </select>
-            <select value={newTier} onChange={e => setNewTier(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-blue-400 font-bold">
+            <select value={newTier} onChange={e => setNewTier(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-purple-400 font-bold">
                 {allTierOptions.map(t => <option key={t} value={t}>{t}</option>)}
             </select>
             <div className="grid grid-cols-2 gap-2">
                 <input type="number" value={newPoints} onChange={e => setNewPoints(Number(e.target.value))} placeholder="New Points" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none" />
-                <select value={newRegion} onChange={e => setNewRegion(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-blue-400">
+                <select value={newRegion} onChange={e => setNewRegion(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-purple-400">
                     {regions.map(r => <option key={r} value={r}>{r}</option>)}
                 </select>
             </div>
-            <button className="bg-blue-600 text-white font-black py-3 rounded-lg text-[10px] uppercase">Update Player</button>
+            <button className="bg-purple-600 text-white font-black py-3 rounded-lg text-[10px] uppercase hover:bg-purple-700 transition-colors">Update Player</button>
           </form>
         </div>
 
