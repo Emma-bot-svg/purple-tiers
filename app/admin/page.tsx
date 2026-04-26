@@ -2,13 +2,13 @@
 import { useEffect, useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
 
-// FIXED: Hardcoded keys to resolve "supabaseUrl is required" error
+// FIXED: Hardcoded keys for bodraggcrgdgvfjvpmgy
 const supabase = createClient(
   'https://bodraggcrgdgvfjvpmgy.supabase.co', 
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJvZHJhZ2djcmdkZ3ZmanZwbWd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyMjkzNTIsImV4cCI6MjA5MjgwNTM1Mn0.Um3hsdoDRwH2TT3x0HKTor1kGdhfg-DNugCy94F80lc'
 )
 
-export default function Admin() {
+export default function SecretAdmin() {
   const [players, setPlayers] = useState<any[]>([])
   const [serverIp, setServerIp] = useState('')
 
@@ -78,74 +78,79 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-[#0d1117] text-[#c9d1d9] p-4 md:p-10">
-      <h1 className="text-3xl font-black italic text-white uppercase mb-10"><span className="text-[#9100ff]">PRXPLE</span> ADMIN</h1>
+      <div className="max-w-[1200px] mx-auto">
+        <div className="flex justify-between items-center mb-10">
+            <h1 className="text-3xl font-black italic text-white uppercase"><span className="text-[#9100ff]">PRXPLE</span> SECRET PANEL</h1>
+            <span className="text-[10px] bg-red-500/20 text-red-500 px-3 py-1 rounded-full border border-red-500/50 font-bold uppercase">Secret Access</span>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1200px] mx-auto">
-        
-        {/* 1. ADD TIER */}
-        <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl">
-          <h2 className="text-[#9100ff] font-black uppercase text-sm mb-4 italic text-center">1. Add New Tier</h2>
-          <form onSubmit={handleAdd} className="flex flex-col gap-3">
-            <input value={addName} onChange={e => setAddName(e.target.value)} placeholder="Username" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-[#9100ff]" required />
-            <select value={addMode} onChange={e => setAddMode(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-white">
-                {modes.map(m => <option key={m} value={m}>{m}</option>)}
-            </select>
-            <select value={addTier} onChange={e => setAddTier(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-[#9100ff] font-bold">
-                {allTierOptions.map(t => <option key={t} value={t}>{t}</option>)}
-            </select>
-            <div className="grid grid-cols-2 gap-2">
-                <input type="number" value={addPoints} onChange={e => setAddPoints(Number(e.target.value))} placeholder="Points" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none" />
-                <select value={addRegion} onChange={e => setAddRegion(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-blue-400">
-                    {regions.map(r => <option key={r} value={r}>{r}</option>)}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            {/* 1. ADD TIER */}
+            <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl">
+            <h2 className="text-[#9100ff] font-black uppercase text-sm mb-4 italic text-center">1. Add New Tier</h2>
+            <form onSubmit={handleAdd} className="flex flex-col gap-3">
+                <input value={addName} onChange={e => setAddName(e.target.value)} placeholder="Username" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-[#9100ff]" required />
+                <select value={addMode} onChange={e => setAddMode(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-white">
+                    {modes.map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
-            </div>
-            <button className="bg-[#9100ff] text-white font-black py-3 rounded-lg text-[10px] uppercase">Add Entry</button>
-          </form>
-        </div>
-
-        {/* 2. CHANGE TIER */}
-        <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl">
-          <h2 className="text-blue-400 font-black uppercase text-sm mb-4 italic text-center">2. Change Existing Tier</h2>
-          <form onSubmit={handleChange} className="flex flex-col gap-3">
-            <input value={changeName} onChange={e => setChangeName(e.target.value)} placeholder="Username" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-blue-400" required />
-            <select value={changeMode} onChange={e => setChangeMode(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-white">
-                {modes.map(m => <option key={m} value={m}>{m}</option>)}
-            </select>
-            <select value={newTier} onChange={e => setNewTier(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-blue-400 font-bold">
-                {allTierOptions.map(t => <option key={t} value={t}>{t}</option>)}
-            </select>
-            <div className="grid grid-cols-2 gap-2">
-                <input type="number" value={newPoints} onChange={e => setNewPoints(Number(e.target.value))} placeholder="New Points" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none" />
-                <select value={newRegion} onChange={e => setNewRegion(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-blue-400">
-                    {regions.map(r => <option key={r} value={r}>{r}</option>)}
+                <select value={addTier} onChange={e => setAddTier(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-[#9100ff] font-bold">
+                    {allTierOptions.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
+                <div className="grid grid-cols-2 gap-2">
+                    <input type="number" value={addPoints} onChange={e => setAddPoints(Number(e.target.value))} placeholder="Points" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none" />
+                    <select value={addRegion} onChange={e => setAddRegion(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-blue-400">
+                        {regions.map(r => <option key={r} value={r}>{r}</option>)}
+                    </select>
+                </div>
+                <button className="bg-[#9100ff] text-white font-black py-3 rounded-lg text-[10px] uppercase hover:bg-[#a31aff] transition-colors">Add Entry</button>
+            </form>
             </div>
-            <button className="bg-blue-600 text-white font-black py-3 rounded-lg text-[10px] uppercase">Update Player</button>
-          </form>
-        </div>
 
-        {/* 3. REMOVE PLAYER */}
-        <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl">
-          <h2 className="text-red-500 font-black uppercase text-sm mb-4 italic text-center">3. Remove Player</h2>
-          <form onSubmit={handleRemove} className="flex flex-col gap-3">
-            <input value={removeName} onChange={e => setRemoveName(e.target.value)} placeholder="Username" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-red-500" required />
-            <select value={removeMode} onChange={e => setRemoveMode(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-white">
-                {modes.map(m => <option key={m} value={m}>{m}</option>)}
-            </select>
-            <button className="bg-red-600 text-white font-black py-3 rounded-lg text-[10px] uppercase">Delete Entry</button>
-          </form>
-        </div>
+            {/* 2. CHANGE TIER */}
+            <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl">
+            <h2 className="text-blue-400 font-black uppercase text-sm mb-4 italic text-center">2. Change Existing Tier</h2>
+            <form onSubmit={handleChange} className="flex flex-col gap-3">
+                <input value={changeName} onChange={e => setChangeName(e.target.value)} placeholder="Username" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-blue-400" required />
+                <select value={changeMode} onChange={e => setChangeMode(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-white">
+                    {modes.map(m => <option key={m} value={m}>{m}</option>)}
+                </select>
+                <select value={newTier} onChange={e => setNewTier(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-blue-400 font-bold">
+                    {allTierOptions.map(t => <option key={t} value={t}>{t}</option>)}
+                </select>
+                <div className="grid grid-cols-2 gap-2">
+                    <input type="number" value={newPoints} onChange={e => setNewPoints(Number(e.target.value))} placeholder="New Points" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none" />
+                    <select value={newRegion} onChange={e => setNewRegion(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-blue-400">
+                        {regions.map(r => <option key={r} value={r}>{r}</option>)}
+                    </select>
+                </div>
+                <button className="bg-blue-600 text-white font-black py-3 rounded-lg text-[10px] uppercase hover:bg-blue-500 transition-colors">Update Player</button>
+            </form>
+            </div>
 
-        {/* 4. CHANGE IP */}
-        <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl">
-          <h2 className="text-green-400 font-black uppercase text-sm mb-4 italic text-center">4. Change Server IP</h2>
-          <form onSubmit={handleIpChange} className="flex flex-col gap-3">
-            <div className="text-[10px] text-gray-500 mb-1 uppercase font-bold text-center">Current: {serverIp}</div>
-            <input value={newIp} onChange={e => setNewIp(e.target.value)} placeholder="New Server IP" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-green-400" />
-            <button className="bg-green-600 text-white font-black py-3 rounded-lg text-[10px] uppercase">Update IP</button>
-          </form>
-        </div>
+            {/* 3. REMOVE PLAYER */}
+            <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl">
+            <h2 className="text-red-500 font-black uppercase text-sm mb-4 italic text-center">3. Remove Player</h2>
+            <form onSubmit={handleRemove} className="flex flex-col gap-3">
+                <input value={removeName} onChange={e => setRemoveName(e.target.value)} placeholder="Username" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-red-500" required />
+                <select value={removeMode} onChange={e => setRemoveMode(e.target.value)} className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs text-white">
+                    {modes.map(m => <option key={m} value={m}>{m}</option>)}
+                </select>
+                <button className="bg-red-600 text-white font-black py-3 rounded-lg text-[10px] uppercase hover:bg-red-500 transition-colors">Delete Entry</button>
+            </form>
+            </div>
 
+            {/* 4. CHANGE IP */}
+            <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl">
+            <h2 className="text-green-400 font-black uppercase text-sm mb-4 italic text-center">4. Change Server IP</h2>
+            <form onSubmit={handleIpChange} className="flex flex-col gap-3">
+                <div className="text-[10px] text-gray-500 mb-1 uppercase font-bold text-center">Current: {serverIp}</div>
+                <input value={newIp} onChange={e => setNewIp(e.target.value)} placeholder="New Server IP" className="bg-[#0d1117] border border-[#30363d] p-3 rounded-lg text-xs outline-none focus:border-green-400" />
+                <button className="bg-green-600 text-white font-black py-3 rounded-lg text-[10px] uppercase hover:bg-green-500 transition-colors">Update IP</button>
+            </form>
+            </div>
+
+        </div>
       </div>
     </div>
   )
