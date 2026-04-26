@@ -81,7 +81,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-[#c9d1d9] pb-10 overflow-x-hidden relative">
-      {/* PURPLE LIQUID GRADIENT BACKGROUND */}
       <div className="fixed inset-0 z-[-1] overflow-hidden bg-black">
         <div className="absolute top-[-20%] left-[-20%] w-[140%] h-[140%] bg-gradient-to-br from-[#4b0082] via-[#9100ff] to-[#000000] opacity-40 blur-[130px] animate-[liquid_12s_infinite_alternate]" />
         <div className="absolute bottom-[-20%] right-[-20%] w-[140%] h-[140%] bg-gradient-to-tl from-[#000000] via-[#6a0dad] to-[#2e0854] opacity-40 blur-[130px] animate-[liquid_15s_infinite_alternate-reverse]" />
@@ -145,10 +144,11 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  <div className="flex-1 flex flex-col justify-center pl-6 md:pl-28 pr-4 min-w-0">
-                    <div className="flex items-center w-full justify-between gap-1 overflow-hidden pr-4"> {/* FIXED NAME CLIPPING */}
-                       <span className="text-[11px] md:text-2xl font-black text-white italic truncate">{p.username}</span>
-                       <span className="text-[7px] md:text-[11px] font-black text-[#00f2ff] lowercase shrink-0">{p.points} points</span> {/* CYAN POINTS */}
+                  {/* FIXED SECTION FOR NAME CLIPPING */}
+                  <div className="flex-1 flex flex-col justify-center pl-10 md:pl-32 pr-2 min-w-0">
+                    <div className="flex items-center w-full justify-between gap-2 overflow-hidden">
+                       <span className="text-[11px] md:text-2xl font-black text-white italic truncate min-w-0">{p.username}</span>
+                       <span className="text-[7px] md:text-[11px] font-black text-[#00f2ff] lowercase shrink-0">{p.points} points</span>
                     </div>
                     <div className="flex items-center gap-1.5 mt-0.5">
                         <img src={rank.img} className="h-2.5 md:h-4 shrink-0" alt="" />
@@ -161,7 +161,7 @@ export default function Home() {
                     {sortedModes.map(m => (
                       <div key={m.n} className={`flex flex-col items-center min-w-[16px] md:min-w-[35px] ${p.tiers[m.n] ? 'opacity-100' : 'opacity-10'}`}>
                         <img src={`https://mctiers.com/tier_icons/${m.i}`} className="w-3.5 md:w-5 h-3.5 md:h-5 mb-1 group-hover:rotate-12 transition-transform" alt="" />
-                        <span className="text-[7px] md:text-[11px] font-black text-[#FFD700]">{p.tiers[m.n] || ''}</span> {/* GOLD TIERS */}
+                        <span className="text-[7px] md:text-[11px] font-black text-[#FFD700]">{p.tiers[m.n] || ''}</span>
                       </div>
                     ))}
                   </div>
@@ -178,11 +178,11 @@ export default function Home() {
                 </div>
                 {players.filter(p => p.gamemode === activeGamemode && p.tier?.includes(t.toString()) && p.username.toLowerCase().includes(search.toLowerCase())).map((p, pIdx) => (
                   <div key={p.id} className="bg-black/60 border border-white/10 p-2 rounded flex items-center justify-between hover:bg-white/10 transition-all card-entry hover:translate-x-1" style={{animationDelay: `${pIdx * 0.03}s`}}>
-                    <div className="flex items-center gap-2 min-w-0 pr-4"> {/* FIXED NAME CLIPPING */}
+                    <div className="flex items-center gap-2 min-w-0 pr-2">
                       <img src={`https://mc-heads.net/avatar/${p.username}/16`} className="w-4 h-4 rounded-sm" alt="" />
                       <span className="text-[10px] md:text-sm font-bold text-white truncate">{p.username}</span>
                     </div>
-                    <span className="text-[10px] font-black text-[#FFD700] tracking-tight">{(p.tier || '').replace('PEAK ', '')}</span> {/* GOLD TIERS */}
+                    <span className="text-[10px] font-black text-[#FFD700] tracking-tight shrink-0">{(p.tier || '').replace('PEAK ', '')}</span>
                   </div>
                 ))}
               </div>
